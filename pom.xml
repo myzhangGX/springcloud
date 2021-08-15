@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.zhang</groupId>
+  <artifactId>springcloud</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>springcloud-api</module>
+    <module>springcloud-procider-dept-8001</module>
+    <module>springcloud-consumer-dept-8002</module>
+    <module>springcloud-eureka-7001</module>
+    <module>springcloud-eureka-7002</module>
+    <module>springcloud-eureka-7003</module>
+    <module>springcloud-procider-dept-8003</module>
+    <module>springcloud-procider-dept-8004</module>
+    <module>springcloud-consumer-feign</module>
+    <module>springcloud-procider-dept-hystrix-8001</module>
+    <module>springcloud-procider-dept-hystrix-8001</module>
+    <module>springcloud-consumer-hystrix-dashboard</module>
+    <module>springcloud-procider-dept-8001</module>
+    <module>springcloud-zuul-9527</module>
+    <module>springcloud-config-server-3344</module>
+    <module>springcloud-config-client-3355</module>
+    <module>springcloud-config-eureka-7001</module>
+    <module>springcloud-config-dept-8001</module>
+  </modules>
+
+  <!--  打包方式-->
+  <packaging>pom</packaging>
+
+  <!--  定义包的版本号-->
+  <properties>
+    <junit.version>4.13.1</junit.version>
+    <lombok.version>1.18.18</lombok.version>
+    <log4j.version>1.2.17</log4j.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!--      springcloud的依赖-->
+      <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>Hoxton.SR12</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!--      springboot依赖 版本号不能错-->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>2.3.12.RELEASE</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!--      springcloud的依赖-->
+      <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
+      <!--      <dependency>-->
+      <!--        <groupId>org.springframework.cloud</groupId>-->
+      <!--        <artifactId>spring-cloud-dependencies</artifactId>-->
+      <!--        <version>2020.0.3</version>-->
+      <!--        <type>pom</type>-->
+      <!--        <scope>import</scope>-->
+      <!--      </dependency>-->
+
+      <!--      &lt;!&ndash;      springboot依赖 版本号不能错&ndash;&gt;-->
+      <!--      <dependency>-->
+      <!--        <groupId>org.springframework.boot</groupId>-->
+      <!--        <artifactId>spring-boot-dependencies</artifactId>-->
+      <!--        <version>2.4.6</version>-->
+      <!--        <type>pom</type>-->
+      <!--        <scope>import</scope>-->
+      <!--      </dependency>-->
+      <!--      <dependency>-->
+      <!--        <groupId>org.springframework.boot</groupId>-->
+      <!--        <artifactId>spring-boot-dependencies</artifactId>-->
+      <!--        &lt;!&ndash;release表示稳定版本、snapshot表示快照版本&ndash;&gt;-->
+      <!--        <version>2.2.2.RELEASE</version>-->
+      <!--        &lt;!&ndash; type表示引入依赖的类型，默认是jar;另有pom、war&ndash;&gt;-->
+      <!--        <type>pom</type>-->
+      <!--        &lt;!&ndash; scope为import时只能存在于dependencyManagement中，用来解决单继承的问题，表示导入此引用的依赖 &ndash;&gt;-->
+      <!--        &lt;!&ndash; scope 还可以为compile、test、runtime、provided、system、import&ndash;&gt;-->
+      <!--        <scope>import</scope>-->
+      <!--      </dependency>-->
+
+      <!--      <dependency>-->
+      <!--        <groupId>org.springframework.cloud</groupId>-->
+      <!--        <artifactId>spring-cloud-dependencies</artifactId>-->
+      <!--        <version>Hoxton.SR1</version>-->
+      <!--        <type>pom</type>-->
+      <!--        <scope>import</scope>-->
+      <!--      </dependency>-->
+
+
+      <!--      数据库-->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.25</version>
+      </dependency>
+      <!--      链接数据源-->
+      <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>1.2.6</version>
+      </dependency>
+
+      <!--      springboot 启动器-->
+      <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+      <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>2.1.4</version>
+      </dependency>
+      <!--junit-->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+      </dependency>
+      <!--      lombok-->
+      <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <!--log4j-->
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>${log4j.version}</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-core</artifactId>
+        <version>1.2.4</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+
+</project>

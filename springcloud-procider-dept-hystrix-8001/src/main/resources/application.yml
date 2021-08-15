@@ -1,0 +1,55 @@
+server:
+  port: 8001
+
+#mybatis配置
+mybatis:
+  type-aliases-package: com.zhang.springcloud.pojo
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+#    configuration:
+#      # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+#      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl\
+
+#spring配置
+spring:
+  application:
+    #    Eureka注册的名字
+    name: springcloud-procider-dept
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource #德鲁伊数据源配置
+    driver-class-name: com.mysql.cj.jdbc.Driver  #那个包的
+    url: jdbc:mysql://localhost:3306/ceshi?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: zhang
+
+#Rureka的配置，服务地址
+eureka:
+  client:
+    service-url:
+      #单机注册http://localhost:7001/eureka/
+      #集群发布：https://eureka7001.com:7001/eureka/，https://eureka7002.com:7002/eureka/，https://eureka7003.com:7003/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+
+  instance:
+    instance-id: springcloud-procider-dept-hystrix-8001  #修改eureka上的默认描述信息
+    prefer-ip-address: true   #true可以看得到ip地址
+#info配置可以让别看到
+info:
+  app.name: zhang-springcloud
+  company.name: blog.zhang.com
+
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream,info,health
+
+feign:
+  #  hystrix:
+  #    enabled: true
+  circuitbreaker:
+    enabled: true
